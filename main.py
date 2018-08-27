@@ -1,15 +1,18 @@
-#pyhon
-from moviepy.editor import VideoFileClip, video.fx
+from moviepy.editor import VideoFileClip
+import moviepy.video.fx.all
+import sys
 
-clip = VideoFileClip('movietest.mp4')
+frame_rate = 30
+new_fps = frame_rate / 10
+filename = sys.argv[1]
+count = 1
+clip = VideoFileClip(filename)
 
-#make new video
-x = 0
-for x in
-#loop take x screen from clip until clip end
-#  fl_image(image_func(get_frame(t)),apply_to[])
-#write videofile
-    #have screen be displayed for 3 frames
-    #x = x + 3
+for counter in range(1,1800, int(new_fps)):
+    clip.save_frame("images/frame%04d.jpg" %count, t = (counter / frame_rate))
+    count += 1
 
-#export video file
+new_clip = moviepy.editor.ImageSequenceClip('images', fps = 10)
+new_clip = new_clip.set_audio(clip.audio)
+
+new_clip.write_videofile("new.mp4")
